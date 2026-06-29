@@ -5,8 +5,8 @@ Instructions & Formatting: Evaluate the candidate's feedback against the provide
 
 # [Candidate Full Name]
 
-Rating: [Aggregate the ratings, e.g., Mixed / Leaning Yes (1 Strong Yes, 5 Yes, 1 No)]
-Recommendation: [Provide a 2-3 sentence hiring recommendation including the target IC level. Synthesize their core strengths and their biggest technical/behavioral gaps].
+Rating: [Target IC level. Should match the career matrix IC2/IC3/IC4/IC5 and high low depending on feedback. Aggregate the ratings, e.g., High IC4 / Low IC5]
+Recommendation: [Provide a 2-3 sentence hiring. Synthesize their core strengths and their biggest technical/behavioral gaps].
 Experience Summary: [Provide exactly a 3-line summary of their professional experience. Focus only on past roles, specific problems they solved, and technologies/companies. Do not summarize the interview performance here]. 2. IC Level & Career Matrix Context
 Create a section titled ### IC Level & Career Matrix Context.
 Using the Engineering Career Matrix, evaluate how the candidate performed against the specific expectations for their target level (e.g., IC3, IC4, IC5).
