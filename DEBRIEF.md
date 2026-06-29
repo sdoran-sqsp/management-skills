@@ -23,8 +23,8 @@ PART 2: SLACK-FRIENDLY FORMAT
 After completing the Google Doc summary, create a divider and generate a highly condensed version specifically formatted for Slack.
 Create a section titled ### Slack-Friendly Summary.
 Experience Summary: Provide the exact same 3-line experience summary generated above, but as plain text blocks without bullet points.
-Scorecard: For each interview, use the exact format below. You must bold the Rating (Yes, Strong Yes, No) and the Advocate status (AF: Yes, AF: Neutral, etc.).
-**[Rating]** [Interviewer Name] **AF:[Advocate Status]** | [Interview Name]
+Scorecard: For each interview, use the exact format below. You must bold the Rating (Yes, Strong Yes, No) and the Advocate status (AF: Yes, AF: Neutral, etc.). Precede the rating with a specific Slack emoji based on the outcome: use :large_green_circle: for Yes / Strong Yes, and :red_circle: for No / Strong No.
+[Emoji] **[Rating]** [Interviewer Name] **AF:[Advocate Status]** | [Interview Name]
 [Interviewer Bottom Line / Exact Quote]
 Highlights: [1-sentence highly condensed summary of strengths]
 Areas for Improvement: [1-sentence highly condensed summary of gaps]
@@ -38,5 +38,5 @@ Scorecard
 🟢 Strong Yes - AF: Yes - System Design – Corey Engelman Interviewer Bottom Line: "tldr; make this person an offer" Demonstrated an above-average skill level in system knowledge, discussing queues, sharding, load balancers, and caching in detail. Worked end-to-end in a careful, measured way and successfully scaled a low-budget startup solution to handle millions of users. Used long polling instead of Server Sent Events, which would be suboptimal for millions of users. Corey noted the candidate is the archetype of a leader who leans on the team to provide the "spark," and would likely need to be paired with other strong engineers.
 Slack-Friendly Summary
 Experience Summary [Candidate Name] has over [X] years of experience building high-scale, event-driven backend systems using technologies like [Tech] at companies including [Company A] and [Company B]. He specializes in solving complex performance and architectural problems, such as [Problem Solved 1]. At [Company C], he eliminated [Problem Solved 2] by successfully architecting [Solution].
-Scorecard Strong Yes Corey Engelman AF:Yes | System Design "tldr; make this person an offer" Highlights: Best system design interview recently; accurate entities/APIs; proactive DynamoDB/Redis rationale; solved dual write problem; effective caching and CQRS. Areas for Improvement: None.
-No Alex Morales AF:Neutral | Data Structures & Algorithms Soft No due to code quality and could have been more methodical Highlights: Recognized read-heavy vs write-heavy optimization; solid input validation; familiar with min-heaps and graphs. Areas for Improvement: Struggled with comment storage; messy code (unnecessary visited node tracking, duplicate counter logic); silent error handling.
+Scorecard :large_green_circle: Strong Yes Corey Engelman AF:Yes | System Design "tldr; make this person an offer" Highlights: Best system design interview recently; accurate entities/APIs; proactive DynamoDB/Redis rationale; solved dual write problem; effective caching and CQRS. Areas for Improvement: None.
+:red_circle: No Alex Morales AF:Neutral | Data Structures & Algorithms Soft No due to code quality and could have been more methodical Highlights: Recognized read-heavy vs write-heavy optimization; solid input validation; familiar with min-heaps and graphs. Areas for Improvement: Struggled with comment storage; messy code (unnecessary visited node tracking, duplicate counter logic); silent error handling.
