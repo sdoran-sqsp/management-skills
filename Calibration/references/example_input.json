@@ -1,0 +1,75 @@
+{
+  "meeting_title": "Commerce Engineering Calibration Subgroup",
+  "team_label": "Commerce - Checkout & Payments",
+  "window_start": { "time": "09:00", "tz": "America/New_York" },
+  "window_end": { "time": "17:30", "tz": "Europe/Dublin" },
+  "candidate_dates": ["2026-08-11", "2026-08-12", "2026-08-13"],
+  "display_timezones": [
+    { "label": "EST", "tz": "America/New_York" },
+    { "label": "IST", "tz": "Europe/Dublin" }
+  ],
+  "minutes_per_person": 5,
+  "buffer_minutes_per_person": 0,
+  "promo_buffer_minutes": 3,
+  "break_minutes": 10,
+  "break_after_levels": ["IC3", "IC4"],
+  "level_order": ["IC2", "IC3", "IC4", "IC5"],
+  "notetaker": "TBD",
+  "level_attendees": {
+    "IC2": [],
+    "IC3": ["Staff Engineer rep"],
+    "IC4": ["Staff Engineer rep", "Director"],
+    "IC5": ["Director", "Senior Leader"]
+  },
+  "manager_unavailable_dates": {
+    "Sam Manager": ["2026-08-11"]
+  },
+  "extra_attendee_unavailable_dates": {
+    "Director": ["2026-08-12"]
+  },
+  "employees": [
+    {
+      "name": "Jane Doe",
+      "manager": "Sam Manager",
+      "team": "Checkout",
+      "level": "IC2",
+      "length_of_service_yrs": 1.5,
+      "time_in_position_yrs": 1.5
+    },
+    {
+      "name": "Alex Kim",
+      "manager": "Sam Manager",
+      "team": "Checkout",
+      "level": "IC3",
+      "length_of_service_yrs": 3,
+      "time_in_position_yrs": 1,
+      "flag_longer_discussion": true
+    },
+    {
+      "name": "Priya Rao",
+      "manager": "Sam Manager",
+      "team": "Payments",
+      "level": "IC3",
+      "length_of_service_yrs": 2,
+      "time_in_position_yrs": 2,
+      "promo_consideration": true
+    },
+    {
+      "name": "Tom Byrne",
+      "manager": "Sam Manager",
+      "team": "Payments",
+      "level": "IC4",
+      "length_of_service_yrs": 4,
+      "time_in_position_yrs": 2,
+      "needs_snr_leader_discussion": true
+    },
+    {
+      "name": "Lena Fitz",
+      "manager": "Sam Manager",
+      "team": "Checkout",
+      "level": "IC5",
+      "length_of_service_yrs": 5,
+      "time_in_position_yrs": 3
+    }
+  ]
+}
