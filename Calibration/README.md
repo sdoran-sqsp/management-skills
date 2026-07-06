@@ -86,7 +86,7 @@ Google Drive folder as Google Docs (landscape, ready to fill in).
 
 ## Iterating
 
-Just tell Claude what to change — "push the deadline out," "Tomer's out all
+Just tell Claude what to change — "push the deadline out," "John's out all
 of August too," "add a promo flag for Jane" — and it'll re-run the scheduler
 with the update rather than hand-editing anything, so the times stay
 consistent.
@@ -95,11 +95,7 @@ consistent.
 
 - **Google Docs dropdown chips** (the native `@Dropdown` picker) can't be
   created through the API — rating cells come with a `▾ Select 1–4`
-  placeholder instead. You (or Claude via browser automation, if you ask)
-  need to swap those for real dropdowns manually via Insert → Dropdown.
-- **Page orientation** on Google Docs created this way isn't always honored
-  from the source formatting — check File → Page setup if a doc opens in
-  portrait.
+  placeholder instead. You need to use the GEMINI_PROMPT.md https://github.com/sdoran-sqsp/management-skills/blob/main/Calibration/GEMINI_PROMPT.md skill within the Google Doc to finalise formatting.
 - Calendar-based availability checking only works as well as the calendar
   access Claude has — if it can't see someone's calendar, it'll ask you
   rather than guess.
