@@ -1,0 +1,504 @@
+{
+  "meeting_title": "Fabricated Test Calibration Subgroup",
+  "team_label": "Multiple teams (cross-manager calibration) - FABRICATED TEST DATA, no real employees",
+  "window_start": {
+    "time": "09:00",
+    "tz": "America/New_York"
+  },
+  "window_end": {
+    "time": "17:30",
+    "tz": "Europe/Dublin"
+  },
+  "candidate_dates": [
+    "2026-08-18",
+    "2026-08-19",
+    "2026-08-20"
+  ],
+  "display_timezones": [
+    {
+      "label": "EST",
+      "tz": "America/New_York"
+    },
+    {
+      "label": "IST",
+      "tz": "Europe/Dublin"
+    }
+  ],
+  "minutes_per_person": 5,
+  "buffer_minutes_per_person": 0,
+  "promo_buffer_minutes": 3,
+  "break_minutes": 10,
+  "break_after_levels": [
+    "IC3",
+    "IC4",
+    "IC5"
+  ],
+  "level_order": [
+    "IC2",
+    "IC3",
+    "IC4",
+    "IC5",
+    "M5"
+  ],
+  "notetaker": "TBD",
+  "level_attendees": {},
+  "manager_unavailable_dates": {},
+  "extra_attendee_unavailable_dates": {},
+  "employees": [
+    {
+      "name": "Devon Ashford",
+      "manager": "Morgan Reyes",
+      "team": "Platform",
+      "level": "IC2",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.4
+    },
+    {
+      "name": "Avery Lin",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 1.5
+    },
+    {
+      "name": "Reese Palmer",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.3
+    },
+    {
+      "name": "Quinn Delgado",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 2.4,
+      "time_in_position_yrs": 0.9
+    },
+    {
+      "name": "Sawyer Kim",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.9
+    },
+    {
+      "name": "Rowan Ibarra",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 2.1,
+      "time_in_position_yrs": 0.9
+    },
+    {
+      "name": "Elliot Marsh",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC3",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 3.0
+    },
+    {
+      "name": "Finley Osei",
+      "manager": "Jamie Chen",
+      "team": "Billing",
+      "level": "IC3",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 3.4
+    },
+    {
+      "name": "Harlow Bennett",
+      "manager": "Morgan Reyes",
+      "team": "Platform",
+      "level": "IC3",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": true,
+      "length_of_service_yrs": 3.3,
+      "time_in_position_yrs": 1.9
+    },
+    {
+      "name": "Marlowe Cruz",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.5
+    },
+    {
+      "name": "Kai Whitfield",
+      "manager": "Morgan Reyes",
+      "team": "Platform",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.8
+    },
+    {
+      "name": "Sage Donovan",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC3",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.3
+    },
+    {
+      "name": "Emerson Vaughn",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC4",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.0
+    },
+    {
+      "name": "Peyton Alcaraz",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC4",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 3.3
+    },
+    {
+      "name": "Tatum Whitmore",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC4",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 5.1
+    },
+    {
+      "name": "Briar Solis",
+      "manager": "Jamie Chen",
+      "team": "Billing",
+      "level": "IC4",
+      "manager_proposed_rating": 4,
+      "promo_consideration": true,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.6,
+      "time_in_position_yrs": 3.3
+    },
+    {
+      "name": "Micah Ostrander",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC4",
+      "manager_proposed_rating": 4,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": true,
+      "length_of_service_yrs": 0.6
+    },
+    {
+      "name": "Landry Cho",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC4",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 5.8
+    },
+    {
+      "name": "Dallas Feldman",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC4",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.2
+    },
+    {
+      "name": "Emory Castellano",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC4",
+      "manager_proposed_rating": 2,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 2.0
+    },
+    {
+      "name": "Wren Abernathy",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC4",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.6
+    },
+    {
+      "name": "Sutton Kavanagh",
+      "manager": "Morgan Reyes",
+      "team": "Platform",
+      "level": "IC4",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 6.4,
+      "time_in_position_yrs": 2.4
+    },
+    {
+      "name": "Blair Okafor",
+      "manager": "Morgan Reyes",
+      "team": "Platform",
+      "level": "IC4",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.6
+    },
+    {
+      "name": "Marin Delacroix",
+      "manager": "Jamie Chen",
+      "team": "Billing",
+      "level": "IC4",
+      "manager_proposed_rating": 1,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": true,
+      "length_of_service_yrs": 4.6
+    },
+    {
+      "name": "Phoenix Larkspur",
+      "manager": "Jamie Chen",
+      "team": "Billing",
+      "level": "IC5",
+      "manager_proposed_rating": 4,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.0
+    },
+    {
+      "name": "Wilder Novak",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 1.8
+    },
+    {
+      "name": "Aspen Torres",
+      "manager": "Casey Nguyen",
+      "team": "Data",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.5,
+      "time_in_position_yrs": 2.9
+    },
+    {
+      "name": "Marlow Higgins",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 5.8
+    },
+    {
+      "name": "Story Beaumont",
+      "manager": "Riley Foster",
+      "team": "Infra",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 3.5,
+      "time_in_position_yrs": 1.9
+    },
+    {
+      "name": "Ellery Pruitt",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 7.6
+    },
+    {
+      "name": "Bellamy Osgood",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.1
+    },
+    {
+      "name": "Indigo Faulkner",
+      "manager": "Drew Sullivan",
+      "team": "Growth",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": true,
+      "length_of_service_yrs": 3.6,
+      "time_in_position_yrs": 1.4
+    },
+    {
+      "name": "Juniper Slate",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.1
+    },
+    {
+      "name": "Ashby Renwick",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.6
+    },
+    {
+      "name": "Cricket Vandermeer",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 5.7,
+      "time_in_position_yrs": 2.9
+    },
+    {
+      "name": "Wells Ashworth",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 8.1
+    },
+    {
+      "name": "Merritt Calloway",
+      "manager": "Taylor Brooks",
+      "team": "Checkout",
+      "level": "IC5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 3.9,
+      "time_in_position_yrs": 2.9
+    },
+    {
+      "name": "Morgan Reyes",
+      "manager": "Harper Voss",
+      "team": "Platform",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.3,
+      "time_in_position_yrs": 2.4
+    },
+    {
+      "name": "Jamie Chen",
+      "manager": "Harper Voss",
+      "team": "Billing",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.3
+    },
+    {
+      "name": "Taylor Brooks",
+      "manager": "Logan Pierce",
+      "team": "Checkout",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 6.7,
+      "time_in_position_yrs": 2.3
+    },
+    {
+      "name": "Casey Nguyen",
+      "manager": "Logan Pierce",
+      "team": "Data",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.6,
+      "time_in_position_yrs": 1.3
+    },
+    {
+      "name": "Drew Sullivan",
+      "manager": "Harper Voss",
+      "team": "Growth",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 0.6
+    },
+    {
+      "name": "Riley Foster",
+      "manager": "Logan Pierce",
+      "team": "Infra",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 4.4,
+      "time_in_position_yrs": 1.4
+    },
+    {
+      "name": "Skyler Vance",
+      "manager": "Harper Voss",
+      "team": "Platform",
+      "level": "M5",
+      "manager_proposed_rating": 3,
+      "promo_consideration": false,
+      "needs_snr_leader_discussion": false,
+      "length_of_service_yrs": 7.8,
+      "time_in_position_yrs": 2.9
+    }
+  ]
+}
