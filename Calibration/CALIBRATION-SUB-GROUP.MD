@@ -6,18 +6,21 @@ description: Builds per-level working documents needed to run an engineering per
 # Calibration Subgroup Planner
 
 Turns a roster of employees (with levels) plus a set of attendance rules into
-ready-to-use documents for a calibration subgroup meeting — **one Agenda and
-one Discussion Template per level** (e.g. `agenda_IC3.md` +
+ready-to-use documents for a calibration subgroup meeting — **one combined
+document per level** (built from that level's `agenda_IC3.md` +
 `discussion_template_IC3.md`, `agenda_IC4.md` + `discussion_template_IC4.md`,
-etc.), rather than one combined document, so each level can be shared and
-scheduled independently with different visibility:
+etc., presented as a single document with the Agenda section followed by the
+Discussion Template section), so each level can still be shared and scheduled
+independently of the others:
 
 1. **Agenda** (per level) — that level's time window (in one or more
    timezones), roster, who needs to attend, and notes on why it landed on the
    date it did.
 2. **Discussion Template** (per level) — the rating/feedback capture sheet
-   used during that level's session (one summary table + one
-   Strengths/Opportunities/Group Feedback block per employee).
+   used during that level's session (one summary table + one per-employee
+   block asking "What did you rate them and why — in one sentence?",
+   "Were you wavering, and if so, why?", and Group Feedback - mirroring the
+   Guide's own discussion questions).
 
 This encodes the process from the Calibration Subgroup Playbook: IC2–IC5 are
 discussed in subgroups (M5+ goes to a separate session), ~5 minutes per person
@@ -199,13 +202,17 @@ get subtly wrong by hand):
 python3 scripts/build_schedule.py <input.json> --outdir <workdir>
 ```
 
-This writes **one Agenda and one Discussion Template per level** into
+This writes **one Agenda and one Discussion Template file per level** into
 `<workdir>` — e.g. `agenda_IC3.md` + `discussion_template_IC3.md`,
-`agenda_IC4.md` + `discussion_template_IC4.md`, and so on — rather than one
-combined document. Each pair is fully self-contained (its own header, its own
-scheduling notes) so they can be shared with different audiences or scheduled
-independently without anyone seeing another level's roster. The script prints
-the full set of output paths per level as JSON.
+`agenda_IC4.md` + `discussion_template_IC4.md`, and so on. These two files
+per level are intermediate output from the script; when presenting to the
+user (Step 4), combine each level's pair into ONE document (Agenda section
+followed by Discussion Template section) rather than presenting them as two
+separate documents. Each level's combined document is still fully
+self-contained (its own header, its own scheduling notes) so levels can be
+shared with different audiences or scheduled independently without anyone
+seeing another level's roster. The script prints the full set of output
+paths per level as JSON.
 
 Write this instruction as a Guide just before the Discussion Template section of each doc - do not change any wording:
 When introducing each person, keep your summary to 30 seconds. Use this format:
@@ -222,9 +229,12 @@ If the room has no questions and the rating is R3 — Strong Contribution, we mo
 
 ## Step 4 — Present as Artifacts
 
-Create a Claude Artifact (markdown) from each generated file, titled clearly
-by level, e.g. `IC3 Calibration Agenda`, `IC3 Discussion Template`, `IC4
-Calibration Agenda`, etc.
+For each level, combine that level's `agenda_{level}.md` and
+`discussion_template_{level}.md` into ONE document (Agenda section, then
+Discussion Template section) and create a single Claude Artifact (markdown)
+from it, titled clearly by level, e.g. `IC3 Calibration Subgroup`, `IC4
+Calibration Subgroup`, etc. Do not present the Agenda and Discussion
+Template as two separate Artifacts/documents.
 
 Show them to the user in the conversation. Briefly point out:
 

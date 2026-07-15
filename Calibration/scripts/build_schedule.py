@@ -512,9 +512,9 @@ def render_discussion_template_for_level(data, level, days):
     for e in emps:
         lines.append(f"### {e['name']}")
         lines.append("")
-        lines.append("| Strengths | Opportunities |")
+        lines.append("| What did you rate them and why — in one sentence? | Were you wavering, and if so, why? |")
         lines.append("|:-:|:-:|")
-        lines.append("| - <br>- <br>- | - <br>- <br>- |")
+        lines.append("|  |  |")
         lines.append("")
         lines.append("**Group Feedback:** ")
         lines.append("")
