@@ -62,8 +62,9 @@ but having it ready speeds things up:
   whichever timezones you need), grouped by manager, plus who's required to
   attend and why the session landed on the date it did.
 - **Discussion Template section** — the rating capture sheet: one summary
-  table (manager/team/level/ratings/promo flag) plus a Strengths /
-  Opportunities / Group Feedback block per person.
+  table (manager/team/level/ratings/promo flag) plus a per-person block
+  asking "What did you rate them and why — in one sentence?", "Were you
+  wavering, and if so, why?", and Group Feedback.
 
 Ask for them as chat artifacts, or ask Claude to save them straight into a
 Google Drive folder as Google Docs (landscape, ready to fill in).

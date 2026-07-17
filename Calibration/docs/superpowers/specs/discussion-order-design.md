@@ -147,7 +147,13 @@ on order. `pending[level]`'s order changes, but the date/time-fitting logic
   "what this is not" reminder). This text is copied exactly as written in
   `CALIBRATION-SUB-GROUP.MD` — implementers must not edit its wording. It
   is independent of the tiering/rating work above; it's just additive
-  content in the same function.
+  content in the same function. The per-person block further down the same
+  function also had its two placeholder columns renamed from generic
+  `Strengths | Opportunities` to two of the Guide's own discussion
+  questions - `What did you rate them and why — in one sentence?` and
+  `Were you wavering, and if so, why?` - so the capture sheet mirrors what
+  the Guide actually asks the group to answer, with a single blank cell
+  each (no bullet-list placeholder, since these are one-line answers).
 
 ## Sensitive-rating callout (chat only, not in documents)
 

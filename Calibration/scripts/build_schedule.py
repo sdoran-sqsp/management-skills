@@ -1,4 +1,4 @@
-_#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Builds a calibration subgroup Agenda and Discussion Template from a JSON input file.
 
@@ -84,8 +84,23 @@ Notes:
   conflict, or free up more time per day rather than content silently vanishing or
   silently splitting.
 - "flag_longer_discussion" employees (e.g. non-3 ratings, open questions) are noted with
-  a (*) in the agenda roster - the tool does NOT reorder people, since managers usually
-  want to control discussion order themselves.
+  a (*) in the agenda roster.
+- `manager_proposed_rating` (optional, integer 1-4, 4=best) drives discussion ORDER only
+  - it is never written into the Discussion Template's "Manager Proposed Rating" column,
+  which always starts as "Not selected" regardless of whether this field was supplied.
+  Within each level, the roster is ordered into tiers, each employee landing in exactly
+  the first tier they qualify for: (1) promo_consideration true, (2) manager_proposed_rating
+  == 4, (3) manager_proposed_rating in (1, 2) - sensitive, flagged via the "sensitive_review"
+  key in this script's JSON output for the skill-runner to raise with the user for People
+  team review, but NEVER labeled or named in the generated documents themselves, (4)
+  everyone else, grouped by manager. Missing rating or rating == 3 both fall into tier 4.
+- The Agenda table has one row per candidate (columns: each display timezone, then
+  Candidate, Manager, Team), each with their OWN computed start-end slot - 5 min normally,
+  8 min (5+3 promo buffer) if promo_consideration - not just the level's overall block span.
+  Required attendees are listed as a line above the table, not a table column.
+- The Discussion Template includes a fixed "## Guide" section, verbatim, immediately before
+  the summary table - see DISCUSSION_GUIDE below. Do not alter its wording when editing this
+  script.
 """
 import json
 import argparse
@@ -93,6 +108,22 @@ import os
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from collections import defaultdict
+
+
+# Verbatim per CALIBRATION-SUB-GROUP.MD - "Write this instruction as a Guide
+# just before the Discussion Template section of each doc - do not change
+# any wording." Do not edit this string's text.
+DISCUSSION_GUIDE = """When introducing each person, keep your summary to 30 seconds. Use this format:
+"[Name] is a [level]. I've rated them [4 — Exceptional / 3 — Strong / 2 — Gaps / 1 — Not Meeting] because [one sentence — what they delivered or where the gap is, anchored to what's expected at their level]. I'm [confident / this one was close]."
+Example:
+"Alex is an IC4. I've rated them 3 — Strong Contribution. They own their squad's backend reliability work end to end, consistently deliver without direction, and their peers rely on them for cross-team coordination. That's what I expect from a solid IC4. I'm confident on this one."
+Compare that to an 4 — Exceptional Contribution at IC4: Alex would need to be raising the bar for the team, not just meeting it — proactively removing blockers, expanding scope beyond what was asked. They're not there yet, and that's not a criticism — 3 — Strong Contribution is a genuinely strong result.
+A reminder of what this is not:
+This is not a performance review recap. We are not covering everything this person accomplished this half. We are not reading from their self-review. We are answering three questions:
+What level are they?
+What did you rate them and why — in one sentence?
+Were you wavering, and if so, why?
+If the room has no questions and the rating is R3 — Strong Contribution, we move on."""
 
 
 def parse_args():
@@ -117,6 +148,33 @@ def group_by_manager(emps):
         members = sorted(by_manager[manager], key=lambda e: e["name"])
         grouped.append((manager, members))
     return grouped
+
+
+def order_for_discussion(emps):
+    """Order a level's roster for discussion: promo first, then rating 4,
+    then rating 1/2 (sensitive - flagged separately, never labeled in the
+    document), then everyone else - grouped by manager within each tier.
+    Each person lands in exactly the first tier they qualify for."""
+
+    def tier(e):
+        if e.get("promo_consideration"):
+            return 0
+        rating = e.get("manager_proposed_rating")
+        if rating == 4:
+            return 1
+        if rating in (1, 2):
+            return 2
+        return 3
+
+    tiers = {0: [], 1: [], 2: [], 3: []}
+    for e in emps:
+        tiers[tier(e)].append(e)
+
+    ordered = []
+    for t in (0, 1, 2, 3):
+        for manager, members in group_by_manager(tiers[t]):
+            ordered.extend(members)
+    return ordered
 
 
 def person_minutes(e, data):
@@ -168,10 +226,7 @@ def build_schedule(data):
     pending = {}
     for level in level_order:
         emps = [e for e in data.get("employees", []) if e["level"] == level]
-        ordered = []
-        for manager, members in group_by_manager(emps):
-            ordered.extend(members)
-        pending[level] = ordered
+        pending[level] = order_for_discussion(emps)
 
     days = []
     skipped_dates = []
@@ -223,6 +278,19 @@ def build_schedule(data):
             windows = to_display_windows(block_start, block_end, display_tzs)
             attendees = managers_needed + extras_today
 
+            # Per-person time slots, walked in the same (tiered, then
+            # manager-grouped) order as full_emps - each slot's duration
+            # comes from person_minutes (5 min, or 8 min = 5+3 promo buffer
+            # for promo_consideration), so the Agenda table can show each
+            # candidate's own start-end time, not just the block's total span.
+            slot_cursor = block_start
+            slots = []
+            for e in full_emps:
+                dur = person_minutes(e, data)
+                slot_end = slot_cursor + timedelta(minutes=dur)
+                slots.append({"employee": e, "windows": to_display_windows(slot_cursor, slot_end, display_tzs)})
+                slot_cursor = slot_end
+
             day_blocks.append({
                 "type": "level",
                 "level": level,
@@ -230,6 +298,7 @@ def build_schedule(data):
                 "count": len(full_emps),
                 "windows": windows,
                 "attendees": attendees,
+                "slots": slots,
             })
             pending[level] = []
             cursor, remaining = block_end, remaining - time_needed
@@ -303,7 +372,7 @@ def render_agenda_for_level(data, level, days, leftover, skipped_dates, diagnost
                  f"{level} against each other in one go._")
     lines.append("")
 
-    header = ["Roster", "# Discussions"] + tz_labels + ["Attendees required"]
+    header = tz_labels + ["Candidate", "Manager", "Team"]
 
     any_flagged = False
     any_promo = False
@@ -320,26 +389,29 @@ def render_agenda_for_level(data, level, days, leftover, skipped_dates, diagnost
     if found_block:
         lines.append(f"## {found_date}")
         lines.append("")
+        attendees_line = ", ".join(found_block["attendees"]) if found_block["attendees"] else ""
+        if attendees_line:
+            lines.append(f"**Attendees required:** {attendees_line}")
+            lines.append("")
         lines.append("| " + " | ".join(header) + " |")
         lines.append("|" + "|".join([":-:"] * len(header)) + "|")
 
-        roster_lines = []
-        for manager, members in group_by_manager(found_block["employees"]):
-            roster_lines.append(f"**{manager}:**")
-            for e in members:
-                marker = ""
-                if e.get("flag_longer_discussion"):
-                    marker += " (*)"
-                    any_flagged = True
-                if e.get("promo_consideration"):
-                    marker += " [Promo]"
-                    any_promo = True
-                roster_lines.append(f"- {e['name']}{marker}")
-        roster_cell = "<br>".join(roster_lines)
-        windows_cells = [f"{found_block['windows'][l][0]} – {found_block['windows'][l][1]}" for l in tz_labels]
-        attendees_cell = "<br>".join(found_block["attendees"]) if found_block["attendees"] else ""
-        row = [roster_cell, str(found_block["count"])] + windows_cells + [attendees_cell]
-        lines.append("| " + " | ".join(row) + " |")
+        # One row per person, in the already-tiered (promo / rating-4 /
+        # sensitive / remaining-by-manager) order - each with their OWN
+        # individual time slot (5 min, or 8 min for promo_consideration),
+        # not just the block's overall start-end span.
+        for slot in found_block["slots"]:
+            e = slot["employee"]
+            name = e["name"]
+            if e.get("flag_longer_discussion"):
+                name += " (*)"
+                any_flagged = True
+            if e.get("promo_consideration"):
+                name += " [Promo]"
+                any_promo = True
+            windows_cells = [f"{slot['windows'][l][0]} – {slot['windows'][l][1]}" for l in tz_labels]
+            row = windows_cells + [name, e.get("manager", ""), e.get("team", "")]
+            lines.append("| " + " | ".join(row) + " |")
         lines.append("")
     else:
         lines.append("## Not yet scheduled")
@@ -411,6 +483,11 @@ def render_discussion_template_for_level(data, level, days):
         lines.append("")
         return "\n".join(lines)
 
+    lines.append("## Guide")
+    lines.append("")
+    lines.append(DISCUSSION_GUIDE)
+    lines.append("")
+
     header = ["Employee", "Manager", "Team", "Job Level", "Manager Proposed Rating",
                "Group Proposed Rating", "Promo Proposal (link)", "Needs Snr Leader Discussion",
                "Length of Service (yrs)", "Time in Position (yrs)"]
@@ -435,9 +512,9 @@ def render_discussion_template_for_level(data, level, days):
     for e in emps:
         lines.append(f"### {e['name']}")
         lines.append("")
-        lines.append("| Strengths | Opportunities |")
+        lines.append("| What did you rate them and why — in one sentence? | Were you wavering, and if so, why? |")
         lines.append("|:-:|:-:|")
-        lines.append("| - <br>- <br>- | - <br>- <br>- |")
+        lines.append("|  |  |")
         lines.append("")
         lines.append("**Group Feedback:** ")
         lines.append("")
@@ -471,10 +548,18 @@ def main():
 
         outputs[level] = {"agenda": agenda_path, "discussion_template": discussion_path}
 
+    # Sensitive-rating callout: surfaced ONLY in this JSON summary (for the
+    # skill-runner to relay in chat), never written into the .md documents.
+    sensitive_review = defaultdict(list)
+    for e in data.get("employees", []):
+        if e.get("manager_proposed_rating") in (1, 2):
+            sensitive_review[e["level"]].append(e["name"])
+
     print(json.dumps({
         "outputs": outputs,
         "days_used": len(days),
         "leftover": {k: [e["name"] for e in v] for k, v in leftover.items()},
+        "sensitive_review": dict(sensitive_review),
     }))
 
 
